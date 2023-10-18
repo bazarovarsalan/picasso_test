@@ -6,3 +6,8 @@ export type TPost = {
 };
 
 export type PostItemProps = TPost;
+
+export type InfiniteScrollProps = {
+  data: TPost[];
+  renderItem: ({ userId, title, body, id }: PostItemProps) => JSX.Element;
+};

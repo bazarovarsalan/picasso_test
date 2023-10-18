@@ -9,19 +9,12 @@ export const postsApi = createApi({
   }),
   endpoints: (builder) => ({
     getPosts: builder.query<TPost[], number>({
-      query: (limit: number) => ({
+      query: (limit) => ({
         url: `/posts`,
         params: {
           _limit: limit,
         },
       }),
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map(({ id }) => ({ type: "Posts" as const, id })),
-              { type: "Posts", id: "LIST" },
-            ]
-          : [{ type: "Posts", id: "LIST" }],
     }),
     getPostDetails: builder.query<TPost, string | undefined>({
       query: (id: string) => ({
